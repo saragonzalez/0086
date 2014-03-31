@@ -46,11 +46,18 @@ public class Responder
      */
     public String generateResponse(HashSet <String> entradaUsuario)
     {
-        String respuesta = null;    
-        
+        String respuesta = null;
         Iterator <String> iterator = entradaUsuario.iterator();
-        String entradaUsuarioCadena = iterator.next();
-        respuesta =respuestaSegunEntrada.get(entradaUsuario);
+        boolean buscandoRespuesta = true;
+        while(iterator.hasNext() && buscandoRespuesta)
+        {
+            respuesta = respuestaSegunEntrada.get(iterator.next());
+            if(respuesta!= null)
+            {
+                buscandoRespuesta = false;
+            }
+        }        
+                
         if(respuesta==null)
         {
             respuesta = respuestas.get(unaRespuesta.nextInt(respuestas.size()));
