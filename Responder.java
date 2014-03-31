@@ -2,6 +2,8 @@
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.HashSet;
 /** The responder class represents a response generator object.
  * It is used to generate an automatic response to an input string.
  * 
@@ -42,9 +44,12 @@ public class Responder
      * Generate a response.
      * @return   A string that should be displayed as the response
      */
-    public String generateResponse(String entradaUsuario)
+    public String generateResponse(HashSet <String> entradaUsuario)
     {
-        String respuesta = null;
+        String respuesta = null;    
+        
+        Iterator <String> iterator = entradaUsuario.iterator();
+        String entradaUsuarioCadena = iterator.next();
         respuesta =respuestaSegunEntrada.get(entradaUsuario);
         if(respuesta==null)
         {

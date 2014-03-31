@@ -1,3 +1,4 @@
+import java.util.HashSet;
 /**
  * This class implements a technical support system. It is the top
  * level class in this project. The support system communicates via
@@ -37,9 +38,11 @@ public class SupportSystem
         printWelcome();
 
         while(!finished) {
-            String entrada = reader.getInput().trim().toLowerCase();
-            
-            if(entrada.equals("bye")) {
+            // aplico metodo trim para omitir espacio inicial y final
+            // aplico metodo toLoverCase para convertir todos los caracteres en minusculas
+            // String entrada = reader.getInput().trim().toLowerCase();
+            HashSet <String> entrada = reader.getInput();
+            if(entrada.contains("bye")) {
                 finished = true;
             }
             else {
