@@ -31,14 +31,14 @@ public class Responder
         problem.add("problem");
         problem.add("operating");
         HashSet <String> linux = new HashSet<>();
-        problem.add("linux");
-        problem.add("error");
+        linux.add("linux");
+        linux.add("error");
         HashSet <String> free = new HashSet<>();
-        problem.add("free");
-        problem.add("warranty");
+        free.add("free");
+        free.add("warranty");
         HashSet <String> windows = new HashSet<>();
-        problem.add("windows");
-        problem.add("nature");
+        windows.add("windows");
+        windows.add("nature");
         
         
         respuestas.add("I need more information");
@@ -61,16 +61,9 @@ public class Responder
     public String generateResponse(HashSet <String> entradaUsuario)
     {
         String respuesta = null;
-        Iterator <String> iterator = entradaUsuario.iterator();
-        boolean buscandoRespuesta = true;
-        while(iterator.hasNext() && buscandoRespuesta)
-        {
-            respuesta = respuestaSegunEntrada.get(iterator.next());
-            if(respuesta!= null)
-            {
-                buscandoRespuesta = false;
-            }
-        }        
+        // busca en el HashMap, la entradaUsuario(conjunto de palabras(HashSet))
+
+        respuesta = respuestaSegunEntrada.get(entradaUsuario);
                 
         if(respuesta==null)
         {
