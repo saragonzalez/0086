@@ -11,14 +11,12 @@ import java.util.HashSet;
  * @version    0.1 (2011.07.31)
  */
 
-
 public class Responder
 {
     private Random unaRespuesta;
     private ArrayList<String> respuestas;
     private HashMap<HashSet, String> respuestaSegunEntrada;
-    
-    
+
     /**
      * Construct a Responder - nothing to do
      */
@@ -39,21 +37,21 @@ public class Responder
         HashSet <String> windows = new HashSet<>();
         windows.add("windows");
         windows.add("nature");
-        
-        
+
         respuestas.add("I need more information");
         respuestas.add("I can not help you, tell me more details");
         respuestas.add("Might I detail it better");
         respuestas.add("I want to help but I need more information");
         respuestas.add("OK, but I need specifics");
-        
+
         respuestaSegunEntrada.put(problem,"what operating system do you use?");
         respuestaSegunEntrada.put(linux,"that gives you the error");
         respuestaSegunEntrada.put(free,"have a one year warranty");
         respuestaSegunEntrada.put(windows,"I do not understand the nature of the error");
+
+        
         
     }
-
     /**
      * Generate a response.
      * @return   A string that should be displayed as the response
@@ -64,10 +62,17 @@ public class Responder
         // busca en el HashMap, la entradaUsuario(conjunto de palabras(HashSet))
 
         respuesta = respuestaSegunEntrada.get(entradaUsuario);
-                
+
         if(respuesta==null)
         {
-            respuesta = respuestas.get(unaRespuesta.nextInt(respuestas.size()));
+            if (respuestas.size() != 0){
+                int numAleatorio = unaRespuesta.nextInt(respuestas.size());
+                respuesta = respuestas.get(numAleatorio);
+                respuestas.remove(numAleatorio); 
+            }else{
+                System.out.println("Error, not the user utterance is understood");
+            }
+
         }
         return respuesta;
     }
