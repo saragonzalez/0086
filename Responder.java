@@ -16,7 +16,8 @@ public class Responder
 {
     private Random unaRespuesta;
     private ArrayList<String> respuestas;
-    private HashMap<String, String> respuestaSegunEntrada;
+    private HashMap<HashSet, String> respuestaSegunEntrada;
+    
     
     /**
      * Construct a Responder - nothing to do
@@ -26,6 +27,19 @@ public class Responder
         unaRespuesta = new Random();
         respuestas = new ArrayList<String>();
         respuestaSegunEntrada = new HashMap<>();
+        HashSet <String> problem = new HashSet<>();
+        problem.add("problem");
+        problem.add("operating");
+        HashSet <String> linux = new HashSet<>();
+        problem.add("linux");
+        problem.add("error");
+        HashSet <String> free = new HashSet<>();
+        problem.add("free");
+        problem.add("warranty");
+        HashSet <String> windows = new HashSet<>();
+        problem.add("windows");
+        problem.add("nature");
+        
         
         respuestas.add("I need more information");
         respuestas.add("I can not help you, tell me more details");
@@ -33,10 +47,10 @@ public class Responder
         respuestas.add("I want to help but I need more information");
         respuestas.add("OK, but I need specifics");
         
-        respuestaSegunEntrada.put("problem","what operating system do you use?");
-        respuestaSegunEntrada.put("linux","that gives you the error");
-        respuestaSegunEntrada.put("free","have a one year warranty");
-        respuestaSegunEntrada.put("error","I do not understand the nature of the error");
+        respuestaSegunEntrada.put(problem,"what operating system do you use?");
+        respuestaSegunEntrada.put(linux,"that gives you the error");
+        respuestaSegunEntrada.put(free,"have a one year warranty");
+        respuestaSegunEntrada.put(windows,"I do not understand the nature of the error");
         
     }
 
